@@ -30,35 +30,29 @@ public class ProductDAO {
 
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        String query = "SELECT productID, product_name, product_price FROM `mydb`.`product`";
         
-        try {
-            conn = DbConnection.getConnection();
-            // Changed "products" to "product" to match your other methods
-            String query = "SELECT * FROM product";
-            stmt = conn.prepareStatement(query);
-            rs = stmt.executeQuery();
+        try (Connection conn = DbConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
             
             while (rs.next()) {
-                Product product = new Product(
-                    rs.getInt("product_id"),
-                    rs.getString("product_name"),
-                    rs.getDouble("price")
-                );
+                int id = rs.getInt("productID");
+                String name = rs.getString("product_name");
+                double price = rs.getDouble("product_price");
+                
+                Product product = new Product(id, name, price);
                 products.add(product);
+                
+                // Debug output
+                System.out.println("Added product: ID=" + id + ", Name=" + name + ", Price=" + price);
             }
+            
+            System.out.println("Retrieved " + products.size() + " products total");
+            
         } catch (SQLException e) {
+            System.err.println("Error fetching products: " + e.getMessage());
             e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
         
         return products;

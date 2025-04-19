@@ -38,7 +38,7 @@ public class UserDAO {
              ResultSet rs = stmt.executeQuery(sql)) {
     
             while (rs.next()) {
-                int userID = rs.getInt("user_id");
+                int userID = rs.getInt("userID");
                 String username = rs.getString("user_name");
                 String password = rs.getString("user_password");
                 String role = rs.getString("user_role");
