@@ -53,8 +53,9 @@ public class UserController {
         }
     }
 
-    // Mendapatkan semua pengguna
     public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+        List<User> users = userDAO.getAllUsers();
+        return users;
     }
+    
 }

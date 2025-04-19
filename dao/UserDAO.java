@@ -32,26 +32,30 @@ public class UserDAO {
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM user";
-
+    
         try (Connection conn = DbConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
-
+    
             while (rs.next()) {
                 int userID = rs.getInt("user_id");
                 String username = rs.getString("user_name");
                 String password = rs.getString("user_password");
                 String role = rs.getString("user_role");
-
+    
                 User user = new User(userID, username, password, role);
                 users.add(user);
             }
-
+    
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    
+        // Debugging: cek apakah data berhasil diambil
+        System.out.println("Users fetched: " + users.size());
         return users;
     }
+    
 
     // Menghapus user berdasarkan ID
     public boolean deleteUser(int userID) {

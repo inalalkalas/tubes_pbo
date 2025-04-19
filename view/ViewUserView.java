@@ -38,13 +38,18 @@ public class ViewUserView extends JFrame {
 
     private void loadUsers() {
         tableModel.setRowCount(0); // Clear existing rows
-        List<User> users = userController.getAllUsers();
-        for (User user : users) {
-            tableModel.addRow(new Object[]{
-                user.getUserID(),
-                user.getUserName(),
-                user.getRole()
-            });
+        try {
+            List<User> users = userController.getAllUsers();
+            for (User user : users) {
+                tableModel.addRow(new Object[]{
+                    user.getUserID(),
+                    user.getUserName(),
+                    user.getRole()
+                });
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error loading users: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
 }

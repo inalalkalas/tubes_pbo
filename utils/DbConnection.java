@@ -23,6 +23,18 @@ public class DbConnection {
         return connection;
     }
 
+    public class TestConnection {
+        public static void main(String[] args) {
+            Connection conn = DbConnection.getConnection();
+            if (conn != null) {
+                System.out.println("Koneksi berhasil!");
+            } else {
+                System.out.println("Koneksi gagal!");
+            }
+        }
+    }
+    
+
     public static void main(String[] args) {
         Connection conn = DbConnection.getConnection();
         System.out.println("Cek koneksi: " + (conn != null ? "✅ Berhasil terhubung ke database!" : "❌ Gagal terhubung ke database."));

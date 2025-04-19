@@ -34,17 +34,7 @@ public class DeleteProductView extends JFrame {
         add(btnDelete);
 
         // Action listener for delete button
-        btnDelete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int productId = Integer.parseInt(txtProductId.getText());
-
-                productController.deleteProduct(productId);
-                JOptionPane.showMessageDialog(null, "Product deleted successfully!");
-                dispose(); // Close the form
-            }
-        });
-
+      
         setVisible(true);
     }
 }

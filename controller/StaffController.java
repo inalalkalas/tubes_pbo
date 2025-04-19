@@ -25,10 +25,6 @@ public class StaffController {
         productDAO.addProduct(product);
     }
 
-    // Menghapus produk
-    public void deleteProduct(int productID) {
-        productDAO.deleteProduct(productID);
-    }
 
     // Mengubah produk
     public void updateProduct(int productID, String productName, int categoryID, int subCategoryID, int subSubCategoryID, double price, int stockQuantity) {

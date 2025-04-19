@@ -30,13 +30,25 @@ public class DashboardStaffView extends JFrame {
         add(btnLogout);
 
         // Button Actions
-        btnAddProduct.addActionListener(e -> new AddProductView(role));
-        btnViewProduct.addActionListener(e -> new ViewProductView(role));
-        btnStockIn.addActionListener(e -> new StockInView(role));
-        btnStockOut.addActionListener(e -> new StockOutView(role));
+        btnAddProduct.addActionListener(e -> {
+            new AddProductView(role).setVisible(true); // Make the new view visible
+        });
+
+        btnViewProduct.addActionListener(e -> {
+            new ViewProductView(role).setVisible(true); // Make the new view visible
+        });
+
+        btnStockIn.addActionListener(e -> {
+            new StockInView(role).setVisible(true); // Make the new view visible
+        });
+
+        btnStockOut.addActionListener(e -> {
+            new StockOutView(role).setVisible(true); // Make the new view visible
+        });
+
         btnLogout.addActionListener(e -> {
-            dispose();
-            new LoginView();
+            dispose(); // Close the current Dashboard
+            new LoginView().setVisible(true); // Show LoginView again
         });
 
         setVisible(true);

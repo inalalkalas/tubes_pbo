@@ -23,11 +23,6 @@ public class ProductController {
         return productDAO.getAllProducts();
     }
 
-    // Menghapus produk
-    public void deleteProduct(int productID) {
-        productDAO.deleteProduct(productID);
-    }
-
     // Mengubah informasi produk
     public void updateProduct(int productID, String productName, int categoryID, int subCategoryID, int subSubCategoryID, double price, int stockQuantity) {
         productDAO.updateProduct(productID, productName, categoryID, subCategoryID, subSubCategoryID, price, stockQuantity);

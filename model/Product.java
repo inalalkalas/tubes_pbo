@@ -46,6 +46,12 @@ public class Product {
         this.product_stock = product_stock;
     }
 
+    public Product(int productID, String productName, double price) {
+        this.productID = productID;
+        this.productName = productName;
+        this.price = price;
+    }
+
     // Getters and Setters
     public int getProductID() {
         return productID;
@@ -75,8 +81,8 @@ public class Product {
         return price;
     }
 
-    public void setProductPrice(double productPrice){
-        this.price = productPrice;
+    public void setProductPrice(double Price){
+        this.price = price;
     }
 
     public int getCategoryID() {

@@ -3,7 +3,6 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import view.AddUserView;
 
 public class DashboardAdminView extends JFrame {
 
@@ -35,38 +34,38 @@ public class DashboardAdminView extends JFrame {
         add(btnViewReport);
         add(btnLogout);
 
-        // Action listeners
+        // Action listeners untuk tombol-tombol
         btnAddProduct.addActionListener((ActionEvent e) -> {
-            new AddProductView(role);
+            new AddProductView(role).setVisible(true);  // Pastikan view tampil
         });
 
         btnViewProduct.addActionListener((ActionEvent e) -> {
-            new ViewProductView(role);
+            new ViewProductView(role).setVisible(true);
         });
 
         btnStockIn.addActionListener((ActionEvent e) -> {
-            new StockInView(role);
+            new StockInView(role).setVisible(true);
         });
 
         btnStockOut.addActionListener((ActionEvent e) -> {
-            new StockOutView(role);
+            new StockOutView(role).setVisible(true);
         });
 
         btnViewUser.addActionListener((ActionEvent e) -> {
-            new ViewUserView(role);
+            new ViewUserView(role).setVisible(true);
         });
 
         btnAddUser.addActionListener((ActionEvent e) -> {
-            new AddUserView(role);
+            new AddUserView(role).setVisible(true);
         });
 
         btnViewReport.addActionListener((ActionEvent e) -> {
-            new ReportView(); // Jika kamu punya ReportView
+            new ReportView().setVisible(true); // Jika kamu punya ReportView
         });
 
         btnLogout.addActionListener((ActionEvent e) -> {
-            dispose();
-            new LoginView();
+            dispose(); // Menutup Dashboard
+            new LoginView().setVisible(true);  // Menampilkan kembali LoginView
         });
 
         setVisible(true);
